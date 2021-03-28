@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { IQuote } from '../interfaces/app.interface';
+import { QuoteService } from '../quote/quote.service';
 
 @Component({
   selector: 'app-button',
@@ -6,10 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent implements OnInit {
+  @Output() randomQuote: IQuote;
 
-  constructor() { }
+  constructor(
+    private quoteService: QuoteService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  newQuote() {
+    this.getQuote();
+  }
+  
+  getQuote() {
+    this.quoteService.getQuote()
+      .subscribe(quote => {
+        this.randomQuote = quote;
+        console.log('this.randomQuote :>> ', this.randomQuote);
+      })
+  }
 }
