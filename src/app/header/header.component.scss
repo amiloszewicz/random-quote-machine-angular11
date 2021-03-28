@@ -1,0 +1,15 @@
+.header-wrapper {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .app-title {
+    color: #605E5E;
+  }
+
+  .app-author {
+    color: #605E5E;
+  }
+}
